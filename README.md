@@ -29,7 +29,6 @@
 | status_id     | integer    | null: false                    |
 | subscriber_id | integer    | null: false                    |
 | region_id     | integer    | null: false                    |
-| area_id       | integer    | null: false                    |
 | lead_time_id  | integer    | null: false                    |
 | price         | integer    | null: false                    |
 | user_id       | references | null: false, foreign_key: true |
@@ -41,30 +40,31 @@
 
 ## purchasesテーブル
 
-| Column  | Type       | options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
+| Column  | Type       | options     |
+| ------- | ---------- | ----------- |
+| user    | references | null: false |
+| item    | references | null: false |
+| address | references | null: false |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one    :address
 
 ## addressテーブル
 
-| Column        | Type    | options     |
-| ------        | ------- | ----------- |
-| approbalcode  | integer | null: false |
-| postalcode    | integer | null: false |
-| region_id     | integer | null: false |
-| city          | string  | null: false |
-| street        | string  | null: false |
-| building_name | string  |             |
-| tel           | string  | null: false |
+| Column        | Type       | options                        |
+| ------        | ---------- | ------------------------------ |
+| approbalcode  | integer    | null: false                    |
+| postalcode    | integer    | null: false                    |
+| region_id     | integer    | null: false                    |
+| city          | string     | null: false                    |
+| street        | string     | null: false                    |
+| building_name | string     |                                |
+| tel           | string     | null: false                    |
+| purchase_id   | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one: purchases
+- belongs_to: purchases
