@@ -44,7 +44,6 @@
 | ------- | ---------- | ----------- |
 | user    | references | null: false |
 | item    | references | null: false |
-| address | references | null: false |
 
 ### Association
 
@@ -56,15 +55,14 @@
 
 | Column        | Type       | options                        |
 | ------        | ---------- | ------------------------------ |
-| approbalcode  | integer    | null: false                    |
-| postalcode    | integer    | null: false                    |
+| postalcode    | string     | null: false                    |
 | region_id     | integer    | null: false                    |
 | city          | string     | null: false                    |
 | street        | string     | null: false                    |
 | building_name | string     |                                |
 | tel           | string     | null: false                    |
-| purchase_id   | references | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to: purchases
+- belongs_to: purchase
