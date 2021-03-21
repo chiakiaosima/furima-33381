@@ -23,7 +23,7 @@
 
 | Column        | Type       | options                        |
 | ------------- | ---------- | ------------------------------ |
-| ptoduct_name          | string     | null: false                    |
+| product_name          | string     | null: false                    |
 | description   | text       | null: false                    |
 | category_id   | integer    | null: false                    |
 | status_id     | integer    | null: false                    |
@@ -42,8 +42,8 @@
 
 | Column  | Type       | options     |
 | ------- | ---------- | ----------- |
-| user    | references | null: false |
-| item    | references | null: false |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
