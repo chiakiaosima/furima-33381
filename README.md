@@ -23,7 +23,7 @@
 
 | Column        | Type       | options                        |
 | ------------- | ---------- | ------------------------------ |
-| item          | string     | null: false                    |
+| ptoduct_name          | string     | null: false                    |
 | description   | text       | null: false                    |
 | category_id   | integer    | null: false                    |
 | status_id     | integer    | null: false                    |
@@ -31,11 +31,11 @@
 | region_id     | integer    | null: false                    |
 | lead_time_id  | integer    | null: false                    |
 | price         | integer    | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one    :purchases
+- has_one    :purchase
 - belongs_to :user
 
 ## purchasesテーブル
@@ -51,7 +51,7 @@
 - belongs_to :item
 - has_one    :address
 
-## addressテーブル
+## addresssテーブル
 
 | Column        | Type       | options                        |
 | ------        | ---------- | ------------------------------ |
