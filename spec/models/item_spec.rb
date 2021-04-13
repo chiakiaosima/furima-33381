@@ -31,31 +31,31 @@ RSpec.describe Item, type: :model do
     end
 
     it "カテゴリーを選択していないと登録ができない" do
-      @item.category_id = '1'
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
 
     it "商品の状態を選択していないと登録ができない" do
-      @item.status_id = '1'
+      @item.status_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Status must be other than 1")
     end
 
     it "配送料の負担を選択していないと登録ができない" do
-      @item.subscriber_id = '1'
+      @item.subscriber_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Subscriber must be other than 1")
     end
 
     it "発送元の地域の選択をしていないと登録ができない" do
-      @item.region_id = '1'
+      @item.region_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Region must be other than 1")
     end
 
     it "発送までの日数を選択をしていないと登録ができない" do
-      @item.lead_time_id = '1'
+      @item.lead_time_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Lead time must be other than 1")
     end
@@ -86,6 +86,12 @@ RSpec.describe Item, type: :model do
 
     it "価格が数字以外だと登録ができない" do
       @item.price = 'asuka'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is out of setting range")
+    end
+
+    it "価格が半角英数混合では登録できないこと" do
+      @item.price = 'a122ka'
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is out of setting range")
     end

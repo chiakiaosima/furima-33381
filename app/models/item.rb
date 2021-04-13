@@ -17,9 +17,11 @@ class Item < ApplicationRecord
   belongs_to :region
   belongs_to :lead_time
 
-  validates :category_id, numericality: { other_than: 1 }
-  validates :status_id, numericality: { other_than: 1 }
-  validates :subscriber_id, numericality: { other_than: 1 }
-  validates :region_id, numericality: { other_than: 1 }
-  validates :lead_time_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :status_id
+  validates :subscriber_id
+  validates :region_id
+  validates :lead_time_id
+  end
 end
