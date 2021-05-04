@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe AddressPurchase, type: :model do
   describe '商品購入管理' do
     before do
-      @purchase = FactoryBot.build(:address_purchase)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @purchase = FactoryBot.build(:address_purchase, user_id: @user.id, item_id: @item.id )
     end
 
     context '商品が購入できる時' do
@@ -102,6 +104,18 @@ RSpec.describe AddressPurchase, type: :model do
         @purchase.tel = "090-1234-5678"
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Tel is invalid")
+      end
+
+      it 'user_idが空では登録できない事' do
+        @purchase.user_id = nil
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空では登録できない事' do
+        @purchase.item_id = nil
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Item can't be blank")
       end
 
     end

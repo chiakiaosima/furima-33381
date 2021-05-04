@@ -1,7 +1,7 @@
 class AddressPurchase
 
   include ActiveModel::Model
-  attr_accessor :postalcode, :region_id, :city, :street, :building_name,  :tel, :purchase, :item_id, :user_id, :token #セーブさせる全てのカラム名を記述
+  attr_accessor :postalcode, :region_id, :city, :street, :building_name,  :tel, :item_id, :user_id, :token #セーブさせる全てのカラム名を記述
 
   with_options presence: true do
     validates :postalcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Input full-width characters." }
@@ -9,6 +9,8 @@ class AddressPurchase
     validates :street
     validates :tel, format: { with: /\A\d{10,11}\z/}
     validates :token
+    validates :user_id
+    validates :item_id
   end
   validates :region_id, numericality: { other_than: 1 }
 

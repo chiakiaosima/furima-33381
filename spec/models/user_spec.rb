@@ -5,28 +5,28 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
-  context '購入ができる時' do
+  context '登録ができる時' do
 
     it '全ての項目に入力があれば登録される' do
       expect(@user).to be_valid
     end
   end
 
-  context '購入ができない時' do
+  context '登録ができない時' do
 
-    it 'tokenがないと登録できない' do
+    it 'nick_nameがないと登録できない' do
       @user.nick_name = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Nick name can't be blank")
     end
 
-    it 'postalcodeがないと登録ができない' do
+    it 'emailがないと登録ができない' do
       @user.email = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
-    it 'postalcodeにハイフンがないと登録ができない' do
+    it 'emailが重複していると登録ができない' do
       @user.save
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
