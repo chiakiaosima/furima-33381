@@ -6,6 +6,7 @@ RSpec.describe AddressPurchase, type: :model do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.create(:item)
       @purchase = FactoryBot.build(:address_purchase, user_id: @user.id, item_id: @item.id )
+      sleep 0.1
     end
 
     context '商品が購入できる時' do
