@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
   def index
     @address_purchase = AddressPurchase.new
   end
-　
+
   
   def create
     @address_purchase = AddressPurchase.new(purchase_params)
